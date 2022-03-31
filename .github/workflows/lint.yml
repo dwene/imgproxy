@@ -1,0 +1,18 @@
+name: Lint
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Lint
+        uses: "./.github/actions/lint"
+        id: lint
+        with:
+          go-version: 1.17
+          vips-version: 8.12

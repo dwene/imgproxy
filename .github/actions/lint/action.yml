@@ -1,0 +1,18 @@
+name: 'Lint imgproxy'
+description: 'Lints imgproxy code with golangci-lint'
+inputs:
+  go-version:
+    description: 'Go version'
+    required: true
+    default: '1.17'
+  vips-version:
+    description: 'libvips version'
+    required: true
+    default: '8.12'
+runs:
+  using: 'docker'
+  image: 'docker://darthsim/imgproxy-circleci:latest'
+  entrypoint: "./.github/actions/lint/lint.sh"
+  args:
+    - ${{ inputs.go-version }}
+    - ${{ inputs.vips-version }}
